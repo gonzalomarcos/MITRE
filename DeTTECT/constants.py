@@ -20,17 +20,34 @@ DATA_TYPE_STIX_ALL_MOBILE_MITIGATIONS = 'mitre_all_mitigations_mobile'
 
 # Group colors
 COLOR_GROUP_OVERLAY_MATCH = '#f9a825'            # orange
-COLOR_GROUP_OVERLAY_MATCH5 = '#f9a825'            # orange
-COLOR_GROUP_OVERLAY_MATCH4 = '#fab951'            # orange
-COLOR_GROUP_OVERLAY_MATCH3 = '#fbcb7c'            # orange
-COLOR_GROUP_OVERLAY_MATCH2 = '#fddca8'            # orange
-COLOR_GROUP_OVERLAY_MATCH1 = '#fef1dc'            # orange
 
-COLOR_GROUP_OVERLAY_ONLY_DETECTION5 = '#448430'   # green
-COLOR_GROUP_OVERLAY_ONLY_DETECTION4 = '#55a33c'   # green
-COLOR_GROUP_OVERLAY_ONLY_DETECTION3 = '#68bd4d'   # green
-COLOR_GROUP_OVERLAY_ONLY_DETECTION2 = '#82c86c'   # green
-COLOR_GROUP_OVERLAY_ONLY_DETECTION1 = '#9dd48b'   # green
+
+#0-0.33- claro
+COLOR_GROUP_OVERLAY_MATCH5C = '#c6d6bc'            # green
+COLOR_GROUP_OVERLAY_MATCH4C = '#c6d6bc'            # green
+COLOR_GROUP_OVERLAY_MATCH3C = '#fce6b5'            # orange
+COLOR_GROUP_OVERLAY_MATCH2C = '#fce6b5'            # orange
+COLOR_GROUP_OVERLAY_MATCH1C = '#fccdd2'            # red
+
+#0.33-0.66- medio
+COLOR_GROUP_OVERLAY_MATCH5M = '#9cb88a'            # green
+COLOR_GROUP_OVERLAY_MATCH4M = '#9cb88a'            # green
+COLOR_GROUP_OVERLAY_MATCH3M = '#fbdc97'            # orange
+COLOR_GROUP_OVERLAY_MATCH2M = '#fbdc97'            # orange
+COLOR_GROUP_OVERLAY_MATCH1M = '#ff7b7b'            # red
+
+#0.66-1- oscuro
+COLOR_GROUP_OVERLAY_MATCH5O = '#719958'            # green
+COLOR_GROUP_OVERLAY_MATCH4O = '#719958'            # green
+COLOR_GROUP_OVERLAY_MATCH3O = '#f9cd6a'            # orange
+COLOR_GROUP_OVERLAY_MATCH2O = '#f9cd6a'            # orange
+COLOR_GROUP_OVERLAY_MATCH1O = '#ff0000'            # red
+
+COLOR_GROUP_OVERLAY_ONLY_DETECTION5 = '#a5b32c'   # green
+COLOR_GROUP_OVERLAY_ONLY_DETECTION4 = '#afbb43'   # green
+COLOR_GROUP_OVERLAY_ONLY_DETECTION3 = '#b9c45b'   # green
+COLOR_GROUP_OVERLAY_ONLY_DETECTION2 = '#e9d978'   # green2orange
+COLOR_GROUP_OVERLAY_ONLY_DETECTION1 = '#eddf8e'   # green2orange
 
 
 COLOR_GROUP_OVERLAY_NO_MATCH = '#ffee58'         # yellow

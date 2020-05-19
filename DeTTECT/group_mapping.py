@@ -288,15 +288,18 @@ def _get_technique_count(groups, groups_overlay, groups_software, overlay_type, 
                 techniques_dict[tech] = dict()
                 techniques_dict[tech]['groups'] = set()
                 techniques_dict[tech]['count'] = v['weight'][tech]+5
+                techniques_dict[tech]['count2'] = v['weight'][tech]
+                #print(group)
 
             # We only want to increase the score when comparing groups and not for visibility or detection.
             # This allows to have proper sorting of the heat map, which in turn improves the ability to visually
             # compare this heat map with the detection/visibility ATT&CK Navigator layers.
             else:
                 techniques_dict[tech]['count'] += v['weight'][tech]+5
+                techniques_dict[tech]['count2'] += v['weight'][tech]
             techniques_dict[tech]['groups'].add(group)
     
-    print(techniques_dict.values())
+    #print(techniques_dict.values())
     max_count = max(techniques_dict.values(), key=lambda k: k['count'])['count']
 
     # create dict {tech_id: score+max_tech_count} to be used for when doing an overlay of the type visibility or detection
@@ -304,10 +307,11 @@ def _get_technique_count(groups, groups_overlay, groups_software, overlay_type, 
         dict_tech_score = {}
         list_tech = groups_overlay[overlay_type.upper()]['techniques']
         for tech in list_tech:
-            print(overlay_type)
+            #print(overlay_type)
             dict_tech_score[tech] = calculate_score(all_techniques[tech][overlay_type])
-            print(dict_tech_score[tech])
-            print(tech)
+            #print(dict_tech_score[tech])
+            #print(tech)
+            #print(dict_tech_score)
 
     for group, v in groups_overlay.items():
         for tech in v['techniques']:
@@ -322,8 +326,10 @@ def _get_technique_count(groups, groups_overlay, groups_software, overlay_type, 
                 if tech not in groups[group]['techniques']:
                     if overlay_type == OVERLAY_TYPE_GROUP:
                         techniques_dict[tech]['count'] += v['weight'][tech]
+
                     else:
                         techniques_dict[tech]['count'] = dict_tech_score[tech]
+
                     # Only do this when it was not already counted by being part of 'groups'.
                     # Meaning the group in 'groups_overlay' was also part of 'groups' (match on Group ID) and the
                     # technique was already counted for that group / it is not a new technique for that group coming
@@ -332,8 +338,15 @@ def _get_technique_count(groups, groups_overlay, groups_software, overlay_type, 
                 if overlay_type == OVERLAY_TYPE_GROUP:
                     # increase count when the group in the YAML file is a custom group
                     techniques_dict[tech]['count'] += v['weight'][tech]
+                    techniques_dict[tech]['count2'] += v['weight'][tech]
+             
                 else:
                     techniques_dict[tech]['count'] = dict_tech_score[tech]
+
+                    
+                    #print("else4")
+                    #print(tech)
+                    #print(techniques_dict)
 
             techniques_dict[tech]['groups'].add(group)
 
@@ -348,6 +361,8 @@ def _get_technique_count(groups, groups_overlay, groups_software, overlay_type, 
                 techniques_dict[tech]['groups'] = set()
             techniques_dict[tech]['groups'].add(group)
 
+    #print("ultimo")
+    #print(techniques_dict)
     return techniques_dict, max_count
 
 
@@ -373,6 +388,7 @@ def _get_technique_layer(techniques_count, groups, overlay, groups_software, ove
         t['techniqueID'] = tech
         t['score'] = v['count']
         t['metadata'] = []
+        t['score2'] = v['count']
         metadata_dict = dict()
 
         for group, values in groups.items():
@@ -389,24 +405,97 @@ def _get_technique_layer(techniques_count, groups, overlay, groups_software, ove
 
         # change the color and add metadata to make the groups overlay visible
         for group, values in overlay.items():
+            #print("count")
+            #print(techniques_count[tech]['count'])
+            if techniques_count[tech]['count'] > 6:
+                metadata_dict['Campaign'] = {str(round(techniques_count[tech]['count']/6))}
+            #print("segundo"+str(max_count))
+            #print(t)
             if tech in values['techniques']:
+            
                 # Determine color:
                 if len(v['groups'].intersection(set(groups.keys()))) > 0:
                     # if the technique is both present in the group (-g/--groups) and the groups overlay (-o/--overlay)
                     
                     t['color'] = COLOR_GROUP_OVERLAY_MATCH
-                    print("segundo")
+               
+                    metadata_dict['Campaign'] = {str(techniques_count[tech]['count2'])}
+             
                     t['score'] = t['score'] + max_count
                     if t['score'] - max_count == 1:
-                        t['color'] = COLOR_GROUP_OVERLAY_MATCH1
+        
+                        t['score'] = techniques_count[tech]['count2']*6 + techniques_count[tech]['count']
+                        
+                        
+                        if 0 <= techniques_count[tech]['count2']*6/max_count <= 0.33:
+                            t['color'] = COLOR_GROUP_OVERLAY_MATCH1C
+                  
+                        elif 0.33 < techniques_count[tech]['count2']*6/max_count <= 0.66:
+                        
+                            t['color'] = COLOR_GROUP_OVERLAY_MATCH1M
+                        
+                        elif 0.66 < techniques_count[tech]['count2']*6/max_count <= 1:
+                     
+                            t['color'] = COLOR_GROUP_OVERLAY_MATCH1O
+                        
                     elif t['score'] - max_count == 2:
-                        t['color'] = COLOR_GROUP_OVERLAY_MATCH2
+                        t['score'] = techniques_count[tech]['count2']*6 + techniques_count[tech]['count']
+                        if 0 <= techniques_count[tech]['count2']*6/max_count <= 0.33:
+                            t['color'] = COLOR_GROUP_OVERLAY_MATCH2C
+                        
+                        elif 0.33 < techniques_count[tech]['count2']*6/max_count <= 0.66:
+                         
+                            t['color'] = COLOR_GROUP_OVERLAY_MATCH2M
+                        
+                        elif 0.66 < techniques_count[tech]['count2']*6/max_count <= 1:
+                            
+                            t['color'] = COLOR_GROUP_OVERLAY_MATCH2O
+                        
+                        
                     elif t['score'] - max_count == 3:
-                        t['color'] = COLOR_GROUP_OVERLAY_MATCH3
+
+                        t['score'] = techniques_count[tech]['count2']*6 + techniques_count[tech]['count']
+                        if 0 <= techniques_count[tech]['count2']*6/max_count <= 0.33:
+                            t['color'] = COLOR_GROUP_OVERLAY_MATCH3C
+                       
+                        elif 0.33 < techniques_count[tech]['count2']*6/max_count <= 0.66:
+                       
+                            t['color'] = COLOR_GROUP_OVERLAY_MATCH3M
+                        
+                        elif 0.66 < techniques_count[tech]['count2']*6/max_count <= 1:
+                         
+                            t['color'] = COLOR_GROUP_OVERLAY_MATCH3O
+                        
+                        
+                 
                     elif t['score'] - max_count == 4:
-                        t['color'] = COLOR_GROUP_OVERLAY_MATCH4
+                        t['score'] = techniques_count[tech]['count2']*6 + techniques_count[tech]['count']
+                        if 0 <= techniques_count[tech]['count2']*6/max_count <= 0.33:
+                            t['color'] = COLOR_GROUP_OVERLAY_MATCH4C
+                     
+                        elif 0.33 < techniques_count[tech]['count2']*6/max_count <= 0.66:
+                   
+                            t['color'] = COLOR_GROUP_OVERLAY_MATCH4M
+                        
+                        elif 0.66 < techniques_count[tech]['count2']*6/max_count <= 1:
+               
+                            t['color'] = COLOR_GROUP_OVERLAY_MATCH4O
+                            
+                 
                     elif t['score'] - max_count == 5:
-                        t['color'] = COLOR_GROUP_OVERLAY_MATCH5
+                        t['score'] = techniques_count[tech]['count2']*6 + techniques_count[tech]['count']
+                        if 0 <= techniques_count[tech]['count2']*6/max_count <= 0.33:
+                            t['color'] = COLOR_GROUP_OVERLAY_MATCH5C
+       
+                        elif 0.33 < techniques_count[tech]['count2']*6/max_count <= 0.66:
+                   
+                            t['color'] = COLOR_GROUP_OVERLAY_MATCH5M
+                        
+                        elif 0.66 < techniques_count[tech]['count2']*6/max_count <= 1:
+                       
+                            t['color'] = COLOR_GROUP_OVERLAY_MATCH5O
+                        
+                        
                     
  
                     
@@ -419,15 +508,16 @@ def _get_technique_layer(techniques_count, groups, overlay, groups_software, ove
                         elif overlay_type == OVERLAY_TYPE_DETECTION:
                             
                             if t['score'] == 1:
-                                t['color'] = COLOR_GROUP_OVERLAY_ONLY_DETECTION1
+                                t['color'] = COLOR_GROUP_OVERLAY_MATCH1C
+                                #COLOR_GROUP_OVERLAY_ONLY_DETECTION1
                             elif t['score'] == 2:
-                                t['color'] = COLOR_GROUP_OVERLAY_ONLY_DETECTION2
+                                t['color'] = COLOR_GROUP_OVERLAY_MATCH2C
                             elif t['score'] == 3:
-                                t['color'] = COLOR_GROUP_OVERLAY_ONLY_DETECTION3
+                                t['color'] = COLOR_GROUP_OVERLAY_MATCH3C
                             elif t['score'] == 4:
-                                t['color'] = COLOR_GROUP_OVERLAY_ONLY_DETECTION4
+                                t['color'] = COLOR_GROUP_OVERLAY_MATCH4C
                             elif t['score'] == 5:
-                                t['color'] = COLOR_GROUP_OVERLAY_ONLY_DETECTION5
+                                t['color'] = COLOR_GROUP_OVERLAY_MATCH5C
                         else:
                             t['color'] = COLOR_GROUP_OVERLAY_NO_MATCH
 
@@ -614,4 +704,5 @@ def generate_group_heat_map(groups, overlay, overlay_type, stage, platform, soft
         filename = platform_to_name(platform) + '_' + '_'.join(groups_list)
 
     write_file(stage, filename[:255], json_string)
+
 
