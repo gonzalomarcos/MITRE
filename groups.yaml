@@ -1,0 +1,125 @@
+%YAML 1.2
+---
+version: 1.0
+file_type: group-administration
+platform: Windows
+groups:
+  -
+    group_name:     Red team
+    campaign:       Scenario 1
+    technique_id:   [T1086, T1053, T1193, T1204, T1003, T1055, T1027, T1085, T1099, T1082, T1016, T1033, T1087, T1075, T1057, T1039, T1041, T1071, T1043, T1001, T1114, T1002]
+    software_id:    [S0002]
+    enabled:        False
+  -
+    group_name:     Carbanak
+    campaign:       1
+    technique_id:   [T1089, T1036, T1050, T1219, T1085, T1078, T1102]
+    software_id:    [S0030, S0002, S0108, S0029]
+    enabled:        True
+    
+  -
+    group_name:     Cobalt Group
+    campaign:       1
+    technique_id:   [T1088, T1191, T1059, T1173, T1203, T1068, T1107, T1037, T1046, T1050, T1027, T1086, T1055, T1108, T1060, T1117, T1219, T1076, T1105, T1053, T1064, T1063, T1218, T1193, T1192, T1071, T1032, T1204, T1220]
+    software_id:    [S0154, S0002, S0284, S0029, S0195]
+    enabled:        True
+
+  -
+    group_name:     GCMAN
+    campaign:       1
+    technique_id:   [T1021]
+    software_id:    []
+    enabled:        True
+    
+  -
+    group_name:     APT38
+    campaign:       1
+    technique_id:   [T1115, T1059, T1485, T1486, T1487, T1189, T1107, T1070, T1056, T1112, T1057, T1105, T1494, T1045, T1071, T1492, T1049, T1529, T1493]
+    software_id:    [S0334, S0002, S0039]
+    enabled:        True
+    
+  -
+    group_name:     RTM
+    campaign:       1
+    technique_id:   [T1102]
+    software_id:    [S0148]
+    enabled:        True
+    
+  -
+    group_name:     Silence
+    campaign:       1
+    technique_id:   [T1059, T1223, T1106, T1107, T1027, T1053, T1113, T1064, T1035, T1193, T1204, T1125]
+    software_id:    [S0191]
+    enabled:        True
+    
+  -
+    group_name:     admin@338
+    campaign:       1
+    technique_id:   [T1087, T1059, T1203, T1083, T1036, T1069, T1193, T1082, T1016, T1049, T1007, T1204]
+    software_id:    [S0043, S0100, S0042, S0039, S0104, S0012, S0096]
+    enabled:        True
+    
+  -
+    group_name:     APT41
+    campaign:       1
+    technique_id:   [T1015, T1067, T1110, T1146, T1116, T1059, T1223, T1090, T1136, T1003, T1002, T1486, T1073, T1483, T1203, T1133, T1008, T1107, T1070, T1056, T1036, T1031, T1112, T1046, T1135, T1086, T1055, T1060, T1076, T1496, T1014, T1053, T1193, T1071, T1195, T1016, T1049, T1033, T1078, T1102, T1047]
+    software_id:    [S0073, S0069, S0020, S0021, S0032, S0002, S0104, S0385, S0097, S0013, S0194, S0006, S0112, S0412]
+    enabled:        True
+    
+  -
+    group_name:     Deep Panda
+    campaign:       1
+    technique_id:   [T1015, T1143, T1066, T1086, T1057, T1117, T1018, T1064, T1100, T1077, T1047]
+    software_id:    [S0021, S0080, S0039, S0097, S0074, S0142, S0057]
+    enabled:        True
+    
+  -
+    group_name:     FIN10
+    campaign:       1
+    technique_id:   [T1107, T1086, T1060, T1076, T1105, T1053, T1064, T1033, T1078]
+    software_id:    [S0363]
+    enabled:        True
+    
+  -
+    group_name:     FIN4
+    campaign:       1
+    technique_id:   [T1114, T1056, T1141, T1188, T1064, T1193, T1192, T1071, T1492, T1204, T1078]
+    software_id:    []
+    enabled:        True
+    
+  -
+    group_name:     FIN5
+    campaign:       1
+    technique_id:   [T1119, T1003, T1074, T1133, T1107, T1070, T1108, T1018, T1064, T1078]
+    software_id:    [S0173, S0029, S0006, S0169, S0195, S0005]
+    enabled:        True
+    
+  -
+    group_name:     FIN7
+    campaign:       1
+    technique_id:   [T1138, T1116, T1059, T1043, T1173, T1036, T1170, T1050, T1027, T1086, T1060, T1105, T1053, T1113, T1064, T1023, T1193, T1071, T1204, T1125, T1497, T1102]
+    software_id:    [S0415, S0030, S0417, S0151, S0145, S0416, S0390, S0146]
+    enabled:        True
+    
+  -
+    group_name:     FIN8
+    campaign:       1
+    technique_id:   [T1059, T1043, T1003, T1002, T1074, T1048, T1068, T1107, T1070, T1112, T1027, T1086, T1076, T1105, T1018, T1053, T1064, T1063, T1193, T1192, T1032, T1204, T1078, T1077, T1047]
+    software_id:    [S0105, S0039, S0196, S0197]
+    enabled:        True
+    
+  -
+    group_name:     OilRig
+    campaign:       1
+    technique_id:   [T1087, T1119, T1110, T1059, T1043, T1223, T1003, T1081, T1094, T1140, T1048, T1133, T1008, T1107, T1066, T1056, T1046, T1027, T1201, T1069, T1086, T1057, T1012, T1108, T1076, T1105, T1021, T1053, T1113, T1064, T1193, T1192, T1194, T1071, T1032, T1082, T1016, T1049, T1033, T1007, T1204, T1078, T1100, T1047]
+    software_id:    [S0360, S0160, S0095, S0170, S0100, S0189, S0349, S0002, S0039, S0104, S0264, S0184, S0029, S0269, S0075, S0258, S0185, S0096, S0057]
+    enabled:        True
+    
+  -
+    group_name:     TA505
+    campaign:       1
+    technique_id:   [T1116, T1503, T1081, T1486, T1173, T1027, T1086, T1105, T1085, T1064, T1218, T1193, T1192, T1204]
+    software_id:    [S0384, S0381, S0383, S0382, S0266]
+    enabled:        True
+    
+    
