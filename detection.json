@@ -1,5 +1,5 @@
 {"name": "Detections example", "version": "2.2", "domain": "mitre-enterprise", "description": "description", "filters": {"stages": ["act"], "platforms": ["Windows", "Linux", "macOS", "AWS", "GCP", "Azure", "Azure AD", "Office 365", "SaaS"]},
-"sorting": 0, "viewMode": 0, "hideDisable": false, "techniques": [{"techniqueID": "T1189", "color": "#689F38", "comment": "", "enabled": true, "tactic": "initial-access", "metadata": [{"name": "-Applicable to", "value": "Redes"},
+"sorting": 3, "viewMode": 0, "hideDisable": false, "techniques": [{"techniqueID": "T1189", "color": "#689F38", "comment": "", "enabled": true, "tactic": "initial-access", "metadata": [{"name": "-Applicable to", "value": "Redes"},
 {"name": "-Detection score", "value": "4"},
 {"name": "-Detection location", "value": "-"},
 {"name": "-Technique comment", "value": "-"},
