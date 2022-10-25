@@ -14,7 +14,7 @@ CSV fields:
 * Familia/Family: Info about the detection rule or where its saved (SIEM, Defender, Splunk..) :smile:
 * Valor/Value: A number between 0-1. You can set an x if you don't want to consider it. The script will pass.
 
-Once you run it, you will hace the same output as if you create the file from [DeTT&CTEditor](https://rabobank-cdc.github.io/dettect-editor/#/techniques) and ready to run DeTTECT scripts.
+Once you run it, you will hace the same output as if you create the file from [DeTT&CT Editor](https://rabobank-cdc.github.io/dettect-editor/#/techniques) and ready to run DeTTECT scripts.
 
 
 <!-- USAGE -->
