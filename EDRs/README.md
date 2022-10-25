@@ -24,3 +24,9 @@ You will have to set the input csv and the output YAML, just edit the script lin
 
 ![codeMitre](https://github.com/gonzalomarcos/Personal/blob/master/EDRs/codeMitre.PNG)
 
+
+
+1. Execute
+   ```sh
+   MITREEDR.py
+   ```
