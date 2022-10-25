@@ -6,7 +6,7 @@ This script transforms a csv file to a nested YAML.
 
 You will need a csv with the following fields. 
 
-imagencsv
+![alt text](https://github.com/gonzalomarcos/Personal/EDRs/blob/master/images/csvMitre.png?raw=true)
 
 CSV fields:
 * Tecnica/Technique: Name of the technique ID
@@ -22,4 +22,5 @@ Once you run it, you will hace the same output as if you create the file from [D
 
 You will have to set the input csv and the output YAML. You will need to edit the script lines 8 and 9, then just run it.
 
-imagencode
+![alt text](https://github.com/gonzalomarcos/Personal/EDRs/blob/master/images/codeMitre.png?raw=true)
+
