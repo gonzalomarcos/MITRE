@@ -20,7 +20,7 @@ Once you run it, you will hace the same output as if you create the file from [D
 <!-- USAGE -->
 ## USAGE
 
-You will have to set the input csv and the output YAML. You will need to edit the script lines 8 and 9, then just run it.
+You will have to set the input csv and the output YAML, just edit the script lines 8 and 9 of MITREEDR.py and run it.
 
 ![codeMitre](https://github.com/gonzalomarcos/Personal/blob/master/EDRs/codeMitre.PNG)
 
