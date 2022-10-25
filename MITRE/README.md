@@ -6,7 +6,7 @@ This script transforms a csv file to a nested YAML.
 
 You will need a csv with the following fields. Every TTP has 4 systems so the script will loop every TTP 4 times and will add all the information to the json as different values.
 
-![csvMitre](https://github.com/gonzalomarcos/Personal/blob/master/MITRE/csvMitreII.PNG)
+![csvMitre](https://github.com/gonzalomarcos/Personal/blob/master/MITRE/csvMITREII.PNG)
 
 CSV fields:
 * Tecnica/Technique: Name of the technique ID
