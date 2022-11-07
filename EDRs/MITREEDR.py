@@ -6,8 +6,8 @@ from datetime import date
 from functools import reduce
 
 tech = []
-in_file = open('FSecure.csv', "r")
-out_file = open('FSecure.yaml', "w")
+in_file = open('REE.csv', "r")
+out_file = open('REE.yaml', "w")
 items = {}
 itemsT = []
 itemsTv= []
@@ -18,8 +18,15 @@ itemsG = []
 itemsPrueba ={}
 
 
-def proper_round(num, dec=0):
+def proper_round(num, dec=0): #detection
     num = num*5
+    num = str(num)[:str(num).index('.')+dec+2]
+    if num[-1]>='5':
+        return float(num[:-2-(not dec)]+str(int(num[-2-(not dec)])+1))
+    return float(num[:-1])
+
+def proper_roundv(num, dec=0): #visibility
+    num = num*4
     num = str(num)[:str(num).index('.')+dec+2]
     if num[-1]>='5':
         return float(num[:-2-(not dec)]+str(int(num[-2-(not dec)])+1))
@@ -75,7 +82,7 @@ def convert_to_yamlvisibility(line, counter):
                                 'score_logbook': [{
                                     'date': datetime.date(date.today().year, date.today().month, date.today().day),
                                     'comment': 'MITRE Engenuity',
-                                    'score': int(proper_round(float(line[3])))}]
+                                    'score': int(proper_roundv(float(line[3])))}]
 
 
     }
