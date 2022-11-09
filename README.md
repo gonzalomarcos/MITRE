@@ -1,6 +1,6 @@
 # MITRE
 
-Scripts and heatmap
+Scripts and heatmaps to automate tasks
 
 Folders:
 * MITRE-ENGENUITY: Scripts to extract TTPs from participants
