@@ -14,7 +14,7 @@ This script extracts all techniques present in the evaluation's json of a partic
 1. Go to a participant evaluation, for example [Elastic]https://attackevals.mitre-engenuity.org/enterprise/participants/elastic?view=overview&adversary=wizard-spider-sandworm)
 ![Participants](https://github.com/gonzalomarcos/Personal/blob/master/mitre-engenuity/Participants.PNG)
 
-2. Chose all the evaluations you want and place it to a directory
+2. Chose all the evaluations you want and place all the files in the same directory
 
 3. Execute
    ```sh
