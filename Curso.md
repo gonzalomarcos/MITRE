@@ -1,4 +1,4 @@
-
+ 
 ### Guión para Curso sobre Operación de Subestaciones Eléctricas
 
 ---
@@ -150,5 +150,3 @@
   - Especificaciones mínimas de conexión para participar en actividades online.
 
 
-
-Enviado desde Outlook para iOS
